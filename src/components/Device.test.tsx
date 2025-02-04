@@ -52,4 +52,49 @@ describe("Device Component", () => {
     expect(screen.getByText("Статус: Завершено")).toBeInTheDocument();
     expect(onToggleMock).toHaveBeenCalledWith("Пресс", false);
   });
+
+  test("проверяет изменение стиля устройства при включении/выключении", () => {
+    const onToggleMock = jest.fn();
+    render(<Device name="Дробилка" onToggle={onToggleMock} />);
+
+    const deviceContainer = screen.getByText("Дробилка").parentElement;
+    const button = screen.getByRole("button", { name: /Включить/i });
+
+    // Проверяем начальный стиль (выключено)
+    expect(deviceContainer).toHaveClass("bg-gray-300");
+
+    // Включаем устройство
+    fireEvent.click(button);
+
+    // Проверяем стиль после включения
+    expect(deviceContainer).toHaveClass("bg-green-500");
+
+    // Выключаем устройство
+    fireEvent.click(button);
+
+    // Проверяем стиль после выключения
+    expect(deviceContainer).toHaveClass("bg-gray-300");
+  });
+
+  test("проверяет изменение текста кнопки при включении/выключении устройства", () => {
+    const onToggleMock = jest.fn();
+    render(<Device name="Дробилка" onToggle={onToggleMock} />);
+
+    const button = screen.getByRole("button", { name: /Включить/i });
+
+    // Проверяем начальный текст кнопки
+    expect(button).toHaveTextContent("Включить");
+
+    // Включаем устройство
+    fireEvent.click(button);
+
+    // Проверяем текст кнопки после включения
+    expect(button).toHaveTextContent("Выключить");
+
+    // Выключаем устройство
+    fireEvent.click(button);
+
+    // Проверяем текст кнопки после выключения
+    expect(button).toHaveTextContent("Включить");
+  });
 });
