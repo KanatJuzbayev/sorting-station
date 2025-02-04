@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+Задание: АРМ Оператора станции сортировки фракций вторсырья
+Цель: Реализовать визуальную панель управления станцией с интерактивными элементами.
+Требования:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Функционал:
+   • Отобразить схематическую станцию сортировки, состоящую из нескольких устройств (например: "Дробилка", "Конвейер", "Пресс").
+   • Каждое устройство должно:
+   • Подсвечиваться зеленым при включении и красным при выключении.
+   • Иметь интерактивную кнопку включения/выключения.
+   • Показывать текущий статус устройства (включено/выключено).
+   • Добавить общий индикатор статуса станции (например: если все устройства выключены, статус станции – "Неактивна").
+   • Данные о статусе устройств должны храниться в useState (или useReducer, если нужна сложность).
 
-Currently, two official plugins are available:
+2. Технологии:
+   • React (хуки, компоненты).
+   • TypeScript (типизация данных устройств).
+   • Использовать Tailwind или CSS для стилизации.
+   • Взаимодействие через контекст или пропсы (если данные об устройствах связаны между компонентами).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. Дополнительно:
+   • Добавить симуляцию процесса: например, через 5 секунд после включения устройства оно "заканчивает цикл работы", и статус переключается на "Завершено".
+   • Реализовать логирование действий оператора в консоль (включение/выключение устройств).
 
-## Expanding the ESLint configuration
+4. Примерный прототип АРМ
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+5. Unit-тесты:
+   • Написать тесты с использованием Jest и React Testing Library:
+   • Проверка подсветки устройств в зависимости от статуса (включено/выключено).
+   • Тестирование работы кнопок управления.
+   • Проверка корректного рендера общего статуса станции.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+6. UML-диаграммы:
+   • Создать диаграмму состояний для описания взаимодействия с устройствами (включено → в процессе работы → завершено → выключено).
+   • Создать диаграмму последовательности, показывающую, как оператор взаимодействует с системой (например, нажатие кнопки → изменение статуса → обновление UI).

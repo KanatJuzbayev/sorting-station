@@ -1,10 +1,10 @@
 import "./App.css";
-import Device from "./components/Device";
+import Station from "./components/Station";
 
 function App() {
   return (
-    <div className="p-4">
-      <Device name="Дробилка" />
+    <div className="App">
+      <Station />
     </div>
   );
 }
