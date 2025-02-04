@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import Device from "./Device";
 
 const devices = ["Дробилка", "Конвейер", "Пресс", "Упаковка"];
