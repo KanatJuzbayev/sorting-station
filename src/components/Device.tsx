@@ -25,13 +25,13 @@ const Device = ({ name, onToggle }: DeviceProps) => {
     const newStatus = !isOn;
     setIsOn(newStatus);
     setStatus(newStatus ? "включено" : "выключено");
-
     onToggle(name, newStatus);
+    console.log(`Устройство ${name}: ${newStatus ? "ВКЛЮЧЕНО" : "ВЫКЛЮЧЕНО"}`);
   };
 
   return (
     <div
-      className={` shadow-lg rounded-xl  border border-gray-200 hexagon  flex flex-col items-center justify-center p-4 m-2  ${
+      className={`shadow-lg rounded-xl  border border-gray-200 hexagon  flex flex-col items-center justify-center p-4 m-2 transition-colors  ${
         isOn
           ? "bg-green-500 hover:bg-green-600"
           : "bg-gray-300 hover:bg-gray-400"

@@ -11,13 +11,12 @@ const Station = () => {
 
   const handleToggle = (name: string, status: boolean) => {
     setDevicesStatus((prev) => ({ ...prev, [name]: status }));
-    console.log(devicesStatus);
   };
 
   const allDevicesOff = Object.values(devicesStatus).every((status) => !status);
 
   useEffect(() => {
-    console.log(devicesStatus);
+    // console.log(devicesStatus);
   }, [devicesStatus]);
 
   return (
