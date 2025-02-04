@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: "jest-environment-jsdom",
-  setupFilesAfterEnv: "<rootDir>/src/jest.setup", // Обновленный путь
+  setupFilesAfterEnv: ["<rootDir>/src/jest.setup.ts"], // Обновленный путь
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
