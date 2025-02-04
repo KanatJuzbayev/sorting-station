@@ -22,7 +22,7 @@ const Device = ({ name }: DeviceProps) => {
   const handleToggle = () => {
     const newStatus = !isOn;
     setIsOn(newStatus);
-    console.log(`Устройство ${name} ${newStatus ? "включено" : "выключено"}`);
+    setStatus(newStatus ? "включено" : "выключено");
   };
 
   return (
