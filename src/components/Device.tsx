@@ -19,7 +19,7 @@ const Device = ({ name, onToggle }: DeviceProps) => {
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [isOn, name]);
+  }, [isOn, name, onToggle]);
 
   const handleToggle = () => {
     const newStatus = !isOn;
@@ -31,17 +31,21 @@ const Device = ({ name, onToggle }: DeviceProps) => {
 
   return (
     <div
-      className={`hexagon flex flex-col items-center justify-center p-4 m-2 rounded ${
-        isOn ? "bg-green-200" : "bg-red-200"
+      className={` shadow-lg rounded-xl  border border-gray-200 hexagon  flex flex-col items-center justify-center p-4 m-2  ${
+        isOn
+          ? "bg-green-500 hover:bg-green-600"
+          : "bg-gray-300 hover:bg-gray-400"
       }`}
     >
       <h2 className="text-lg font-bold">{name}</h2>
       <p>Статус: {status}</p>
       <button
         onClick={handleToggle}
-        className={`mt-2 px-4 py-2 rounded ${
-          isOn ? "bg-red-500" : "bg-green-500"
-        } text-white`}
+        className={`mt-2 px-5 py-2 rounded-lg transition-colors shadow-md ${
+          isOn
+            ? "bg-red-500 hover:bg-red-600"
+            : "bg-green-500 hover:bg-green-600"
+        } text-white font-semibold`}
       >
         {isOn ? "Выключить" : "Включить"}
       </button>

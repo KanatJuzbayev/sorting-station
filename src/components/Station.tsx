@@ -14,17 +14,22 @@ const Station = () => {
     console.log(devicesStatus);
   };
 
+  const allDevicesOff = Object.values(devicesStatus).every((status) => !status);
+
   useEffect(() => {
     console.log(devicesStatus);
   }, [devicesStatus]);
 
   return (
-    <div className="p-4">
+    <div className={`p-4 ${allDevicesOff ? "bg-gray-100" : "bg-green-100"}`}>
       <h1 className="text-2xl font-bold mb-4">Станция сортировки</h1>
       <div className="flex">
         {devices.map((device, index) => (
           <Device key={index} name={device} onToggle={handleToggle} />
         ))}
+      </div>
+      <div className="mt-5 font-bold">
+        <p>Статус станции: {allDevicesOff ? "Неактивна" : "Активна"}</p>
       </div>
     </div>
   );
