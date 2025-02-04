@@ -26,7 +26,11 @@ const Device = ({ name }: DeviceProps) => {
   };
 
   return (
-    <div className={`p-4 m-2 rounded ${isOn ? "bg-green-200" : "bg-red-200"}`}>
+    <div
+      className={`hexagon flex flex-col items-center justify-center p-4 m-2 rounded ${
+        isOn ? "bg-green-200" : "bg-red-200"
+      }`}
+    >
       <h2 className="text-lg font-bold">{name}</h2>
       <p>Статус: {status}</p>
       <button
