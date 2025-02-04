@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 interface DeviceProps {
   name: string;
+  onToggle: (name: string, status: boolean) => void;
 }
 
-const Device = ({ name }: DeviceProps) => {
+const Device = ({ name, onToggle }: DeviceProps) => {
   const [isOn, setIsOn] = useState(false);
   const [status, setStatus] = useState("Выключено");
 
@@ -14,6 +15,7 @@ const Device = ({ name }: DeviceProps) => {
       const timer = setTimeout(() => {
         setIsOn(false);
         setStatus("Завершено");
+        onToggle(name, false);
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -23,6 +25,8 @@ const Device = ({ name }: DeviceProps) => {
     const newStatus = !isOn;
     setIsOn(newStatus);
     setStatus(newStatus ? "включено" : "выключено");
+
+    onToggle(name, newStatus);
   };
 
   return (
