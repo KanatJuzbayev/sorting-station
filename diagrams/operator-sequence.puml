@@ -1,0 +1,27 @@
+@startuml
+actor Оператор
+participant Device
+participant Station
+participant UI
+
+Оператор -> Device: Нажатие кнопки
+activate Device
+Device -> Device: handleToggle()
+Device -> Device: setIsOn(true), setStatus("В процессе работы")
+Device -> Station: onToggle(name, true)
+activate Station
+Station -> Station: Обновление devicesStatus
+Station --> UI: Рендер нового состояния
+deactivate Station
+
+... Через 5 секунд ...
+
+Device -> Device: Таймер срабатывает
+Device -> Device: setIsOn(false), setStatus("Завершено")
+Device -> Station: onToggle(name, false)
+activate Station
+Station -> Station: Обновление devicesStatus
+Station --> UI: Рендер нового состояния
+deactivate Station
+deactivate Device
+@enduml
